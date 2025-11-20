@@ -1,5 +1,7 @@
 # WeatherNow
 
+#project link-"https://alokchaturvedi2005.github.io/weather/"
+
 WeatherNow is a lightweight, responsive weather web app built with Tailwind CSS and the Open-Meteo APIs (no API key required). It provides current weather, a 5-day forecast, local time, recent search history, and simple temperature alerts stored in `localStorage`.
 
 **Files included**
