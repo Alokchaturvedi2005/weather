@@ -1,0 +1,23 @@
+/* WeatherNow custom styles
+body {
+  transition: background 0.7s ease-in-out, color 0.4s ease;
+}
+
+/* Background themes */
+.theme-sunny { background: linear-gradient(#fff7e6, #ffd27f); color: #222; }
+.theme-cloudy { background: linear-gradient(#e9eff7, #9fb1c8); color: #1e293b; }
+.theme-rainy { background: linear-gradient(#e6f2ff, #6b9dd6); color: #1e293b; }
+.theme-snow { background: linear-gradient(#f9fbff, #e6f6ff); color: #0f172a; }
+.theme-storm { background: linear-gradient(#dcd6f7, #5c6bc0); color: #fff; }
+
+.toast {
+  animation: fadeIn 0.4s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 420px) {
+  #current-temp { font-size: 2.5rem !important; }
+} 

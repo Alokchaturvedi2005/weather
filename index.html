@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeatherNow — Open-Meteo</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body id="app-body" class="min-h-screen bg-gradient-to-br from-sky-100 to-indigo-100 transition-all duration-700">
+ 
+  <!-- Header -->
+  <header class="max-w-5xl mx-auto p-4 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+    <h1 class="text-2xl font-bold">🌤️ WeatherNow</h1>
+    <div class="ml-auto flex flex-wrap items-center gap-2 w-full sm:w-auto">
+      <form id="search-form" class="flex w-full sm:w-auto">
+        <input id="city-input" class="w-full sm:w-56 p-2 border rounded-l-lg" placeholder="Search city..." />
+        <button class="bg-indigo-600 text-white px-3 rounded-r-lg">Search</button>
+      </form>
+      <button id="geo-btn" class="px-3 py-2 border rounded ">📍</button>
+      <button id="unit-toggle" class="px-3 py-2 border rounded text-sm">°C</button>
+    </div>
+  </header>
+
+  <!-- Alert Toasts -->
+  <div id="alert-container" class="max-w-5xl mx-auto p-4"></div>
+
+  <!-- Main -->
+  <main class="max-w-5xl mx-auto p-4 grid lg:grid-cols-3 gap-6">
+    <!-- Current Weather -->
+    <section class="col-span-2 bg-white/80 rounded-xl p-6 shadow" id="current">
+      <div class="flex flex-col sm:flex-row justify-between items-center">
+        <div class="flex items-center gap-4">
+          <div id="current-icon" class="w-20 h-20"></div>
+          <div>
+            <h2 id="location-name" class="text-2xl font-semibold">—</h2>
+            <p id="weather-desc" class="text-slate-600">—</p>
+          </div>
+        </div>
+        <div class="text-right">
+          <p id="current-temp" class="text-5xl font-extrabold">--°</p>
+          <p id="wind" class="text-sm text-slate-500">—</p>
+        </div>
+      </div>
+
+      <div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+        <div><b>Humidity:</b> <span id="humidity">—</span></div>
+        <div><b>Min/Max:</b> <span id="minmax">—</span></div>
+        <div><b>Local Time:</b> <span id="local-time">—</span></div>
+      </div>
+
+      <div class="mt-5">
+        <label class="font-semibold">Temperature Alert</label>
+        <div class="flex gap-2 mt-2">
+          <input id="alert-value" type="number" class="p-2 border rounded w-28" placeholder="e.g. 40" />
+          <select id="alert-unit" class="p-2 border rounded">
+            <option value="C">°C</option>
+            <option value="F">°F</option>
+          </select>
+          <button id="set-alert" class="px-3 bg-amber-500 rounded text-white">Set</button>
+          <button id="clear-alert" class="px-3 border rounded">Clear</button>
+        </div>
+        <div id="alert-info" class="text-sm text-slate-600 mt-1 hidden"></div>
+      </div>
+    </section>
+
+    <!-- Forecast -->
+    <aside class="space-y-4">
+      <div class="bg-white/80 rounded-xl p-4 shadow">
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold">5-Day Forecast</h3>
+          <button id="refresh-btn" class="text-sm border rounded px-2 py-1">↻</button>
+        </div>
+        <div id="forecast" class="mt-3 flex flex-col gap-2"></div>
+      </div>
+
+      <div class="bg-white/80 rounded-xl p-4 shadow">
+        <h3 class="font-semibold">Recent Cities</h3>
+        <div id="recent-list" class="mt-2 text-sm"></div>
+        <button id="clear-history" class="mt-2 text-red-600 text-sm">Clear History</button>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="text-center text-sm p-4 text-slate-500">
+    Built with Open-Meteo • No API key • Tailwind CSS
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
